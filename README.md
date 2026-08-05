@@ -6,13 +6,13 @@ Sie erweitert die 4u‑Achse und verbindet alle PX‑Systeme (PX3, PX6, PX9, PX1
 ## 4u — Response Layer 7
 4u ersetzt die alte RESPO‑Achse durch ein neues Modell:
 
-- **OK** — Zustimmung  
-- **NOK** — Ablehnung  
-- **FLOW** — System fließt  
-- **BREAK** — System bricht  
-- **ECHO** — Spiegelung  
-- **VOID** — Neutral  
-- **ROOT** — Rückkehr  
+- OK — Zustimmung  
+- NOK — Ablehnung  
+- FLOW — System fließt  
+- BREAK — System bricht  
+- ECHO — Spiegelung  
+- VOID — Neutral  
+- ROOT — Rückkehr  
 
 ## omni.vector — Identitäts‑Achse
 Die omni‑Achse definiert Identität über ROOT, FLOW und ECHO:
@@ -33,3 +33,4 @@ omni.vector verbindet:
 
 ## Status
 omni.vector ist aktiv, stabil und vollständig iki1uc‑kompatibel.
+
