@@ -1,30 +1,35 @@
-# 4u – Response Layer 7 (iki1uc)
+# omni.vector — Identity & Response Layer (iki1uc)
 
-4u ist die 7. Response-Ebene im iki1uc-System.
-Sie ersetzt die alte RESPO-Achse durch ein neues, systemisches Modell:
+omni.vector ist die universelle Identitäts‑Ebene im iki1uc‑System.  
+Sie erweitert die 4u‑Achse und verbindet alle PX‑Systeme (PX3, PX6, PX9, PX12).
 
-OK / NOK / FLOW / BREAK / ECHO / VOID / ROOT
+## 4u — Response Layer 7
+4u ersetzt die alte RESPO‑Achse durch ein neues Modell:
 
-4u verbindet:
-- PX-TRIO (PX3 / PX6 / PX9)
-- PX12 / PX4 (Fusion + Achse)
-- SYS / SYS-x (System + Kreuzung)
-- 2me (Mirror-Return)
-- TEM (Zeit)
-- UI-SCANNER (Interface)
+- **OK** — Zustimmung  
+- **NOK** — Ablehnung  
+- **FLOW** — System fließt  
+- **BREAK** — System bricht  
+- **ECHO** — Spiegelung  
+- **VOID** — Neutral  
+- **ROOT** — Rückkehr  
 
------------------------------------------
-# FUNKTION
+## omni.vector — Identitäts‑Achse
+Die omni‑Achse definiert Identität über ROOT, FLOW und ECHO:
 
-respo.OK     → Zustimmung  
-respo.NOK    → Ablehnung  
-respo.FLOW   → System fließt  
-respo.BREAK  → System bricht  
-respo.ECHO   → Spiegelung  
-respo.VOID   → Neutral  
-respo.ROOT   → Rückkehr
+omni(x) = ROOT(x) + FLOW(x) + ECHO(x)
 
------------------------------------------
-# STATUS
 
-4u ist aktiv, eigenständig und vollständig iki1uc.
+## System‑Verbindungen
+omni.vector verbindet:
+
+- PX‑TRIO (PX3 / PX6 / PX9)  
+- PX12 / PX4 (Fusion + Achse)  
+- SYS / SYS‑x (System + Kreuzung)  
+- 2me (Mirror‑Return)  
+- TEM (Zeit)  
+- UI‑Scanner  
+- FUNKTION  
+
+## Status
+omni.vector ist aktiv, stabil und vollständig iki1uc‑kompatibel.
