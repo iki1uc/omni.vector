@@ -2,89 +2,116 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>iki1uc · ATOM · ANKER · RESPO · Datenstand</title>
-<link rel="stylesheet" href="style.css">
+<title>omni.vector · Hauptindex</title>
+
+<style>
+body { background:#000; color:#0f0; font-family:Consolas; padding:30px; }
+h1, h2 { color:#6cf; }
+pre { background:#111; border:1px solid #333; padding:12px; white-space:pre-wrap; }
+a { color:#6cf; }
+.grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; margin-top:20px; }
+.block { background:#111; border:1px solid #333; padding:20px; border-radius:8px; }
+button { background:#111; color:#0f0; border:1px solid #333; padding:8px 16px; margin-top:10px; }
+</style>
 </head>
 
 <body>
 
-<h1>iki1uc · ATOM · ANKER · RESPO · Datenstand</h1>
+<h1>omni.vector · Systemindex</h1>
+<p>Identität · Achsen · Vektoren · Scores · 4u‑Response · iki1uc‑System.</p>
 
-<div class="panel">
-    <h2>ATOM</h2>
-    <pre id="atom"></pre>
+<hr>
+
+<h2>omni.vector — Identitätskern</h2>
+<pre>
+ID = omni.vector
+Achse = ROOT / FLOW / ECHO
+System = iki1uc · 4u · PX12
+Status = aktiv
+</pre>
+
+<hr>
+
+<h2>Systemdateien</h2>
+
+<div class="grid">
+  <div class="block">
+    <h3>Identität</h3>
+    <a href="ID.html">ID.html</a>
+    <a href="README.md">README.md</a>
+  </div>
+
+  <div class="block">
+    <h3>Vektor‑Daten</h3>
+    <a href="achse-wert-6.csv">achse-wert-6.csv</a>
+    <a href="ebene-vektor-8.csv">ebene-vektor-8.csv</a>
+    <a href="vektor-score-6.csv">vektor-score-6.csv</a>
+  </div>
 </div>
 
-<div class="panel">
-    <h2>ANKER</h2>
-    <pre id="anker"></pre>
-</div>
+<hr>
 
-<div class="panel">
-    <h2>RESPO</h2>
-    <pre id="respo"></pre>
-</div>
+<h2>LIVE‑Vektor‑Analyse</h2>
+<pre id="output">Bereit…</pre>
+<button onclick="loadVectors()">Vektoren laden</button>
 
-<div class="panel">
-    <h2>Modul‑Datenstand (CSV)</h2>
-    <pre id="csv"></pre>
-</div>
+<script>
+// CSV Loader
+async function loadCSV(path){
+  try{
+    const r = await fetch(path);
+    if(!r.ok) return "Fehler: Datei nicht gefunden";
+    return await r.text();
+  }catch(e){
+    return "Fehler: Netzwerkproblem";
+  }
+}
 
-<div class="panel">
-    <h2>Dokumente</h2>
-    <ul>
-        <li><a href="docs/index.html">docs/index.html</a></li>
-        <li><a href="docs/id.html">docs/id.html</a></li>
-        <li><a href="docs/atom.html">docs/atom.html</a></li>
-    </ul>
-</div>
+function parseCSV(txt){
+  return txt.split("\n")
+    .map(v => parseFloat(v.trim()))
+    .filter(v => !isNaN(v));
+}
 
-<script type="module">
-import { ATOM } from "./atom.js";
-import { ANKER } from "./anker.js";
-import { RESPO } from "./respo.js";
+async function loadVectors(){
+  const a6 = parseCSV(await loadCSV("achse-wert-6.csv"));
+  const e8 = parseCSV(await loadCSV("ebene-vektor-8.csv"));
+  const s6 = parseCSV(await loadCSV("vektor-score-6.csv"));
 
-/* -----------------------------
-   ATOM erzeugen
------------------------------ */
-const atom = ATOM.init()
-    .excite(3)
-    .connect("WELT")
-    .connect("SCALE");
+  const out = {
+    achse_6: a6,
+    ebene_8: e8,
+    score_6: s6,
+    sum_achse: a6.reduce((a,b)=>a+b,0),
+    sum_ebene: e8.reduce((a,b)=>a+b,0),
+    sum_score: s6.reduce((a,b)=>a+b,0),
+    omni_status: "aktiv",
+    response_4u: {
+      ok: 1,
+      flow: 1,
+      echo: 1,
+      root: 1,
+      break: 0,
+      nok: 0,
+      void: 0
+    }
+  };
 
-document.getElementById("atom").textContent =
-    JSON.stringify(atom.info(), null, 2);
-
-/* -----------------------------
-   ANKER koppeln
------------------------------ */
-const anker = ANKER.lock(atom);
-
-document.getElementById("anker").textContent =
-    JSON.stringify(anker.info(), null, 2);
-
-/* -----------------------------
-   RESPO aktualisieren
------------------------------ */
-const respo = RESPO.update(atom, anker);
-
-document.getElementById("respo").textContent =
-    JSON.stringify(respo.info(), null, 2);
-
-/* -----------------------------
-   CSV laden
------------------------------ */
-fetch("modul-datenstand-4.csv")
-    .then(r => r.text())
-    .then(t => {
-        document.getElementById("csv").textContent = t;
-    })
-    .catch(e => {
-        document.getElementById("csv").textContent =
-            "Fehler beim Laden der CSV:\n" + e;
-    });
-
+  document.getElementById("output").textContent =
+    JSON.stringify(out, null, 2);
+}
 </script>
+
+<hr>
+
+<h2>Systemstatus</h2>
+<pre>
+omni.vector = geladen
+4u = aktiv
+PX = verbunden
+REALITÄT = harmonisch
+SYSTEM = stabil
+</pre>
 
 </body>
 </html>
